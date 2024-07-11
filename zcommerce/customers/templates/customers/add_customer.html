@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+
+
+	<br><h3>Enter Customer:</h3><br>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {{ form.firstname.label(class="form-label") }} {{ form.firstname(class="form-control") }}
+        {{ form.lastname.label (class="form-label")}} {{ form.lastname(class="form-control") }}
+        {{ form.address1.label(class="form-label") }} {{ form.address1(class="form-control") }}
+        {{ form.address2.label (class="form-label")}} {{ form.address2(class="form-control") }}
+        {{ form.city.label (class="form-label")}} {{ form.city(class="form-control") }}
+        {{ form.state.label (class="form-label")}} {{ form.state(class="form-control") }}
+        {{ form.zipcode.label (class="form-label")}} {{ form.zipcode(class="form-control") }}
+        {{ form.phone.label(class="form-label") }} {{ form.phone(class="form-control") }}
+        {{ form.email.label (class="form-label")}} {{ form.email(class="form-control") }}
+        {{ form.bankbalance.label (class="form-label")}} {{ form.bankbalance(class="form-control") }}
+       <br>{{ form.submit(class="btn btn-secondary") }}
+    </form>
+
+		
+
+{% endblock %}

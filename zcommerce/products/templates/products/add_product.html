@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+
+
+	<br><h3>Enter Product:</h3><br>
+    <form method="post">
+
+        {{ form.hidden_tag() }}
+        {{ form.productname.label(class="form-label") }} {{ form.productname(class="form-control") }}
+        {{ form.description.label (class="form-label")}} {{ form.description(class="form-control") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-control") }}
+        {{ form.stockqty.label (class="form-label")}} {{ form.stockqty(class="form-control") }}
+
+       <br>{{ form.submit(class="btn btn-secondary") }}
+    </form>
+
+		
+
+{% endblock %}
