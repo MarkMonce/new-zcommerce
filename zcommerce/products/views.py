@@ -2,8 +2,8 @@
 #Product views.py
 from flask import render_template,url_for,redirect,request,Blueprint
 ###ADD DB STUFF LATER
-#from zcommerce import db
-#from zcommmerce.models import Customer
+from zcommerce import db
+from zcommerce.models import Product
 from zcommerce.products.forms import ProductEntry
 
 ### DO NOT USE THIS UNTIL IT IS COMPLETE ###########
@@ -17,21 +17,14 @@ products = Blueprint('products', __name__, template_folder='templates/products')
 def newproduct():
     form = ProductEntry()
     if form.validate_on_submit():
-    	##Later, ORM Customer Object will go here to enter form data into database)
+        product = Product(product_name = form.product_name.data,
+								product_description = form.product_description.data, 
+								product_price = form.product_price.data, 
+								product_quantity = form.product_quantity.data)
+        db.session.add(product)
+        db.session.commit()
+ 
 
-    	#db.session.add(customer)
-    	#db.session.commit()
-    	# firstname = form.firstname.data
-    	# lastname = form.lastname.data
-    	# address1 = form.address1.data
-    	# address2 = form.address2.data
-    	# city = form.city.data
-    	# state = form.state.data
-    	# zipcode = form.zipcode.data
-    	# phone = form.phone.data
-    	# email = form.city.data
-        # bankbalance = form.bankbalance.data
-
-        return redirect(url_for('/'))
+        return redirect(url_for('core.index'))
 
     return render_template('add_product.html', form=form)

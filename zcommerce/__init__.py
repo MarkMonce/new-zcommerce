@@ -21,7 +21,7 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'zimplepimpledimple'
 basedirectory = os.path.abspath(os.path.dirname(__file__))  
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedirectory, 'zcommerce.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedirectory, 'zcommercedb.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 

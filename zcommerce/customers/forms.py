@@ -4,8 +4,8 @@ from wtforms import StringField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, Email, NumberRange
 from wtforms import ValidationError
  
+# from zcommerce.models import Customer #Add this later when we do the DB stuff
 
- #from zcommerce.models import Customer #Add this later when we do the DB stuff
 
 class CustomerEntry(FlaskForm):
 	firstname = StringField('First Name', validators=[DataRequired()])
@@ -16,7 +16,7 @@ class CustomerEntry(FlaskForm):
 	state = StringField('State', validators=[DataRequired()])
 	zipcode = StringField('Zip Code', validators=[DataRequired()])
 	phone = StringField('Phone', validators=[DataRequired()])
-	email = StringField('Phone', validators=[DataRequired()])
+	email = StringField('E-mail Address', validators=[DataRequired()])
 	bankbalance = IntegerField('Bank Balance',default=0,validators=[DataRequired(), NumberRange(min=0)])
 	submit = SubmitField('Enter')
 

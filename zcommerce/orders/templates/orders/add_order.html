@@ -8,10 +8,10 @@
     <form method="post">
 
         {{ form.hidden_tag() }}
-        {{ form.customerid.label (class="form-label")}} {{ form.customerid(class="form-control") }}
-        {{ form.productid.label (class="form-label")}} {{ form.productid(class="form-control") }}
-        {{ form.orderdate.label(class="form-label") }} {{ form.orderdate(class="form-control") }}
-        {{ form.quantity.label (class="form-label")}} {{ form.quantity(class="form-control") }}
+        {{ form.customer_id.label (class="form-label")}} {{ form.customer_id(class="form-control") }}
+        {{ form.product_id.label (class="form-label")}} {{ form.product_id(class="form-control") }}
+        {{ form.order_date.label(class="form-label") }} {{ form.order_date(class="form-control") }}
+        {{ form.order_quantity.label (class="form-label")}} {{ form.order_quantity(class="form-control") }}
 
 
        <br>{{ form.submit(class="btn btn-secondary") }}

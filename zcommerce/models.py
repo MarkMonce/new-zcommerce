@@ -32,8 +32,8 @@ class Customer(db.Model):
     def __repr__(self):
         return f"Customer: {self.first_name} {self.last_name}"
     
-    def bank_balance(self):
-        return self.bankbalance
+    # def bank_balance(self):
+    #     return self.bankbalance
     
     def update_bank_balance(self, amount):
         self.bankbalance += amount
@@ -58,11 +58,11 @@ class Product(db.Model):
     def __repr__(self):
         return f"Product: {self.product_name}"
     
-    def product_price(self):
-        return self.product_price
+    # def product_price(self):
+    #     return self.product_price
     
-    def product_quantity(self):
-        return self.product_quantity
+    # def product_quantity(self):
+    #     return self.product_quantity
     
     def update_product_quantity(self, amount):
         self.product_quantity += amount
@@ -86,24 +86,23 @@ class Order(db.Model):
     __tablename__ = 'orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))
-    product_id  = db.Column(db.Integer, db.ForeignKey('products.id'))
-    orderdate = db.Column(db.Date, nullable=False)
-    quantity = db.Column(db.Integer)
+    customerid = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    productid  = db.Column(db.Integer, db.ForeignKey('products.id'))
+    order_date = db.Column(db.Date, nullable=False)
+    order_quantity = db.Column(db.Integer)
     total = db.Column(db.Float)
     
-    def __init__(self, customer_id, product_id, orderdate, quantity, total):
-        self.customer_id = customer_id
-        self.product_id = product_id
-        self.orderdate = orderdate
-        self.quantity = quantity
+    def __init__(self, customer_id, product_id, order_date, order_quantity, total=0.0):
+        self.customerid = customer_id
+        self.productid = product_id
+        self.order_date = order_date
+        self.order_quantity = order_quantity
         self.total = total
     
     def __repr__(self):
         return f"Order: {self.id}"
     
-    def total(self):
-        return self.total
+
     
     def update_total(self, quantity, price):
         self.total = quantity * price
@@ -121,5 +120,5 @@ class Order(db.Model):
         else:
             return False
 
- 
+
 

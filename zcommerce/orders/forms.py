@@ -8,8 +8,8 @@ from wtforms import ValidationError
 
 
 class OrderEntry(FlaskForm):
-	customerid = IntegerField('Customer ID: ', validators=[DataRequired()])
-	productid = IntegerField('Product ID: ', validators=[DataRequired()])
-	orderdate = DateField('Date', validators=[DataRequired()])
-	quantity = IntegerField('Quantity', validators=[DataRequired()])
+	customer_id = IntegerField('Customer ID: ', validators=[DataRequired()])
+	product_id = IntegerField('Product ID: ', validators=[DataRequired()])
+	order_date = DateField('Date', validators=[DataRequired()])
+	order_quantity = IntegerField('Quantity', validators=[DataRequired()])
 	submit = SubmitField('Enter')

@@ -7,8 +7,8 @@ from wtforms import ValidationError
 
 
 class ProductEntry(FlaskForm):
-	productname = StringField('Product Name', validators=[DataRequired()])
-	description = StringField('Description', validators=[DataRequired()])
-	price = FloatField('Price', validators=[DataRequired()])
-	stockqty = IntegerField('Quantity in Stock', validators=[DataRequired()])
+	product_name = StringField('Product Name', validators=[DataRequired()])
+	product_description = StringField('Description', validators=[DataRequired()])
+	product_price = FloatField('Price', validators=[DataRequired()])
+	product_quantity = IntegerField('Quantity in Stock', validators=[DataRequired()])
 	submit = SubmitField('Enter')
