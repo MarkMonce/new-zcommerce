@@ -6,7 +6,7 @@
 
     <br><h3>Customer List:</h3><br>
 
-    <a href="{{url_for('customers.newcustomer')}}">Add Customer</a><br><br>
+    
 
     <table class="table table-striped">
         <thead>
@@ -15,7 +15,6 @@
             <th>Name</th>
             <th>Address</th>
             <th>City</th>
-            <th>State</th>
             <th>Account Balance</th>
         </tr>
         </thead>
@@ -23,8 +22,7 @@
         {% for customer in customers %}
         <tr>
             <td>{{ customer.id }}</td>
-            <td>{{ customer.first_name }}</td>
-            <td>{{ customer.last_name }}</td>
+            <td>{{ customer.first_name }} {{ customer.last_name }}</td>
             <td>{{ customer.address1 }}
                 {% if customer.address2 %}
                     <br>{{ customer.address2 }}
@@ -36,7 +34,7 @@
         </tbody>
     </table>
 
-
+    <a href="{{url_for('customers.newcustomer')}}">Add Customer</a><br><br>
 		
 
 {% endblock %}

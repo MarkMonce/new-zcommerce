@@ -25,7 +25,7 @@ def newproduct():
         db.session.commit()
  
 
-        return redirect(url_for('products.productlist'))
+        return redirect(url_for('products.product_list'))
 
     return render_template('add_product.html', form=form)
 

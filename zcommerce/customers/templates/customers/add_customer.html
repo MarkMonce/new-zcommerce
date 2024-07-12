@@ -4,6 +4,9 @@
 
     
 	<br><h3>Enter New Customer:</h3><br>
+
+    
+
     <form method="post">
         {{ form.hidden_tag() }}
         {{ form.firstname.label(class="form-label") }} {{ form.firstname(class="form-control") }}
@@ -21,9 +24,9 @@
 
     <br><br>
 
-    
+    <a href="{{url_for('customers.customerlist')}}">Customer List</a><br><br>
   
-    <a href="{{url_for('customers.customerlist')}}">Customer List</a>
+
 		
 
 {% endblock %}

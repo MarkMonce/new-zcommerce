@@ -25,7 +25,7 @@ def newcustomer():
                                 bank_balance = form.bankbalance.data)
         db.session.add(customer)
         db.session.commit()
-        return redirect(url_for('customers.list'))
+        return redirect(url_for('customers.customerlist'))
 
     return render_template('add_customer.html', form=form)
 
