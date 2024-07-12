@@ -1,14 +1,10 @@
-#views.py
+
 #Product views.py
 from flask import render_template,url_for,redirect,request,Blueprint
-###ADD DB STUFF LATER
 from zcommerce import db
 from zcommerce.models import Product
 from zcommerce.products.forms import ProductEntry
 
-### DO NOT USE THIS UNTIL IT IS COMPLETE ###########
-#DO NOT USE
-#DO NOT USE
 
 #Create mapping to this for the __init__.py file and main app.py
 products = Blueprint('products', __name__, template_folder='templates/products')
@@ -25,7 +21,7 @@ def newproduct():
         db.session.commit()
  
 
-        return redirect(url_for('products.product_list'))
+        return redirect(url_for('products.productlist'))
 
     return render_template('add_product.html', form=form)
 

@@ -1,15 +1,10 @@
 #order views.py
 
 from flask import render_template,url_for,redirect,request,Blueprint
-###ADD DB STUFF LATER
 from zcommerce import db
 from zcommerce.models import Order, Product, Customer
 from zcommerce.orders.forms import OrderEntry
 from flask import flash
-
-### DO NOT USE THIS UNTIL IT IS COMPLETE ###########
-#DO NOT USE
-#DO NOT USE
 
 #Create mapping to this for the __init__.py file and main app.py
 orders = Blueprint('orders', __name__, template_folder='templates/orders')
@@ -43,6 +38,8 @@ def neworder():
         else:
               product.product_quantity -= order.order_quantity
               customer.bank_balance -= order.total
+            # Could I also do this executing the methods in the models?
+            # customer.update_bank_balance(-order.total)
               
         db.session.add(order)
         db.session.commit()

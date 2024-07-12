@@ -1,6 +1,5 @@
 #Customer views.py
 from flask import render_template,url_for,redirect,request,Blueprint
-###ADD DB STUFF LATER
 from zcommerce import db
 from zcommerce.models import Customer
 from zcommerce.customers.forms import CustomerEntry
