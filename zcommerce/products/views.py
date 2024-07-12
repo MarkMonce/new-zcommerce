@@ -25,11 +25,11 @@ def newproduct():
         db.session.commit()
  
 
-        return redirect(url_for('products.list'))
+        return redirect(url_for('products.productlist'))
 
     return render_template('add_product.html', form=form)
 
-@products.route('/list')
-def list():
+@products.route('/productlist')
+def productlist():
     products = Product.query.all()
-    return render_template('list.html', products=products)
+    return render_template('product_list.html', products=products)

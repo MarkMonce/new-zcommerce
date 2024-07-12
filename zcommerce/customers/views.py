@@ -31,8 +31,8 @@ def newcustomer():
 
 #route to display all customers using a query and list.html
 
-@customers.route('/list')
-def list():
+@customers.route('/customerlist')
+def customerlist():
     customers = Customer.query.all()
-    return render_template('list.html', customers=customers)
+    return render_template('customer_list.html', customers=customers)
 

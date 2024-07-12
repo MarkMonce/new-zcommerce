@@ -24,7 +24,7 @@
             <td>{{ product.product_name }}</td>
             <td>{{ product.description }}</td>
 
-            <td>{{ product.product.product_price}}</td>   
+            <td>{{ product.product_price}}</td>   
             <td>{{ product.product_quantity }}</td>
         </tr>
         {% endfor %}
@@ -32,8 +32,8 @@
     </table>
 
    <!-- <a href="{{url_for('customers.newcustomer')}}">Add Add Customer</a><br><br>-->
-    <a href="{{url_for('products.add_product')}}">Add Product</a><br><br>
-    <a href="{{url_for('products.list')}}">Product List</a>
+  
+    <a href="{{url_for('products.newproduct')}}">Enter New Product</a>
 
 
 		
