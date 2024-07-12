@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content%}
+<div class="container">
+    <h1>Customer Details</h1>
+    <div class="customer-details">
+        <p><strong>Customer ID:</strong> {{ customer.id }}</p>
+        <p><strong>First Name:</strong> {{ customer.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ customer.last_name }}</p>
+        <p><strong>Address:</strong> {{customer.address1}}{% if customer.address2 %}
+            <br>{{ customer.address2 }}
+            {% endif %}</p>
+        <p><strong>City:</strong> {{ customer.city }}, {{ customer.state }}  {{customer.zipcode}}</p>
+        <p><strong>Email:</strong> {{ customer.email }}</p>
+        <p><strong>Phone:</strong> {{ customer.phone }}</p>
+    </div>
+    <a href="{{ url_for('customer_list') }}">Back to Customer List</a>
+</div>
+
+
+
+
+{% endblock %}

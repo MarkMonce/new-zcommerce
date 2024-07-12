@@ -25,7 +25,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedirector
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-csrf = CSRFProtect(app)
+csrf = CSRFProtect(app) #I dont think I'm using this right now
 db = SQLAlchemy(app)
 Migrate(app, db)
 

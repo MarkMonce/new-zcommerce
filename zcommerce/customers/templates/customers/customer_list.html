@@ -21,7 +21,8 @@
         <tbody>
         {% for customer in customers %}
         <tr>
-            <td>{{ customer.id }}</td>
+            <!--<td>{{ customer.id }}</td>-->
+            <td><a href="{{ url_for('customers.newcustomer', id=customer.id) }}">{{ customer.id }}</a></td>
             <td>{{ customer.first_name }} {{ customer.last_name }}</td>
             <td>{{ customer.address1 }}
                 {% if customer.address2 %}
