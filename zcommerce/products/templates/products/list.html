@@ -1,1 +1,41 @@
-list.html
+{% extends "base.html" %}
+
+{% block content%}
+
+
+
+    <br><h3>Product List:</h3><br>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.description }}</td>
+
+            <td>{{ product.product.product_price}}</td>   
+            <td>{{ product.product_quantity }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <!-- <a href="{{url_for('customers.newcustomer')}}">Add Add Customer</a><br><br>-->
+    <a href="{{url_for('products.add_product')}}">Add Product</a><br><br>
+    <a href="{{url_for('products.list')}}">Product List</a>
+
+
+		
+
+{% endblock %}

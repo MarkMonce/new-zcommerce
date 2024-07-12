@@ -1,1 +1,43 @@
-list.html
+{% extends "base.html" %}
+
+{% block content%}
+
+
+
+    <br><h3>Customer List:</h3><br>
+
+    <a href="{{url_for('customers.newcustomer')}}">Add Customer</a><br><br>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Account Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.first_name }}</td>
+            <td>{{ customer.last_name }}</td>
+            <td>{{ customer.address1 }}
+                {% if customer.address2 %}
+                    <br>{{ customer.address2 }}
+                {% endif %}</td>
+            <td>{{ customer.city }}, {{ customer.state }} {{ customer.zip }}</td>   
+            <td>{{ customer.bank_balance }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+		
+
+{% endblock %}
+

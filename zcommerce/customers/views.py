@@ -25,6 +25,14 @@ def newcustomer():
                                 bank_balance = form.bankbalance.data)
         db.session.add(customer)
         db.session.commit()
-        return redirect(url_for('core.index'))
+        return redirect(url_for('customers.list'))
 
     return render_template('add_customer.html', form=form)
+
+#route to display all customers using a query and list.html
+
+@customers.route('/list')
+def list():
+    customers = Customer.query.all()
+    return render_template('list.html', customers=customers)
+

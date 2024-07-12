@@ -2,9 +2,8 @@
 
 {% block content%}
 
-
-
-	<br><h3>Enter Customer:</h3><br>
+    
+	<br><h3>Enter New Customer:</h3><br>
     <form method="post">
         {{ form.hidden_tag() }}
         {{ form.firstname.label(class="form-label") }} {{ form.firstname(class="form-control") }}
@@ -20,6 +19,11 @@
        <br>{{ form.submit(class="btn btn-secondary") }}
     </form>
 
+    <br><br>
+
+    
+  
+    <a href="{{url_for('customers.list')}}">Customer List</a>
 		
 
 {% endblock %}
