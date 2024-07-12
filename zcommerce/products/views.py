@@ -13,14 +13,15 @@ products = Blueprint('products', __name__, template_folder='templates/products')
 def newproduct():
     form = ProductEntry()
     if form.validate_on_submit():
+        
         product = Product(product_name = form.product_name.data,
 								product_description = form.product_description.data, 
 								product_price = form.product_price.data, 
 								product_quantity = form.product_quantity.data)
+        
         db.session.add(product)
         db.session.commit()
  
-
         return redirect(url_for('products.productlist'))
 
     return render_template('add_product.html', form=form)

@@ -12,6 +12,7 @@ customers = Blueprint('customers', __name__, template_folder='templates/customer
 def newcustomer():
     form = CustomerEntry()
     if form.validate_on_submit():
+
         customer = Customer(first_name = form.firstname.data,
                                 last_name = form.lastname.data, 
                                 address1 = form.address1.data, 
@@ -22,13 +23,15 @@ def newcustomer():
                                 phone = form.phone.data,
                                 email = form.email.data,
                                 bank_balance = form.bankbalance.data)
+        
         db.session.add(customer)
         db.session.commit()
+
         return redirect(url_for('customers.customerlist'))
 
     return render_template('add_customer.html', form=form)
 
-#route to display all customers using a query and list.html
+#route to display all customers using a query and customer_list.html
 
 @customers.route('/customerlist')
 def customerlist():

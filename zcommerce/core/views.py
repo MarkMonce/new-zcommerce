@@ -10,5 +10,5 @@ core = Blueprint('core', __name__)
 def index():
 	return render_template('index.html')
 
-# for some apps, may include an "info" route to an info page
+
 
