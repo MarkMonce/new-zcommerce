@@ -43,3 +43,6 @@ app.register_blueprint(products)
 app.register_blueprint(orders)
 
 
+@app.template_filter('currency')
+def currency_filter(value):
+    return "${:,.2f}".format(value)

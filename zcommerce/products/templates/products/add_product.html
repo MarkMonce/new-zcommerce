@@ -10,7 +10,14 @@
         {{ form.hidden_tag() }}
         {{ form.product_name.label(class="form-label") }} {{ form.product_name(class="form-control") }}
         {{ form.product_description.label (class="form-label")}} {{ form.product_description(class="form-control") }}
-        {{ form.product_price.label(class="form-label") }} {{ form.product_price(class="form-control") }}
+        <!-- {{ form.product_price.label(class="form-label") }} {{ form.product_price  (class="form-control", onblur="formatAndStoreCurrency(this)") }} -->
+        <!-- <input type="text" id="display_price" class="form-control" onblur="formatAndStoreCurrency()" /> -->
+        <div class="form-group">
+            {{ form.product_price.label(class="form-label") }}
+            <input type="text" id="display_price" class="form-control" onblur="formatAndStoreCurrency()" />
+            {{ form.product_price(class="form-control", id="hidden_price", type="hidden") }}
+        </div>
+        {{ form.product_price(class="form-control", id="hidden_price", type="hidden") }}
         {{ form.product_quantity.label (class="form-label")}} {{ form.product_quantity(class="form-control") }}
 
        <br>{{ form.submit(class="btn btn-secondary") }}
@@ -19,4 +26,38 @@
     <a href="{{url_for('products.productlist')}}">Product List</a>
 		
 
+{% endblock %}
+<!--This Javascript to interactively format the price field as currency is probably overkiill at this time (july 2024)
+I recommend to myself, to take a course on using Javascript in HTML before going any further with this. 
+I can remove this entirely by swapping this out with "add_product_old.html to remove all of the javascript and do without the pricing stuff"
+Although I do like how it works and going through this even with AI help was educational-->
+
+
+{% block scripts %}
+<script>
+    function formatAndStoreCurrency() {
+        let displayInput = document.getElementById('display_price');
+        let hiddenInput = document.getElementById('hidden_price');
+        let value = displayInput.value.trim();
+
+        console.log('Original Value:', value);
+
+        if (value) {
+            // Parse as float and ensure it's a valid number
+            let numberValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+            if (!isNaN(numberValue)) {
+                let formattedValue = numberValue.toFixed(2);  // Ensure it's a decimal with 2 places
+                displayInput.value = '$' + formattedValue;
+                hiddenInput.value = formattedValue;
+                console.log('Formatted Value:', displayInput.value);
+                console.log('Hidden Value:', hiddenInput.value);
+            } else {
+                console.log('Invalid Value:', value);
+            }
+        } else {
+            hiddenInput.value = '';
+            console.log('Cleared Hidden Value');
+        }
+    }
+</script>
 {% endblock %}

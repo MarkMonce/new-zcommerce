@@ -29,7 +29,7 @@
                     <br>{{ customer.address2 }}
                 {% endif %}</td>
             <td>{{ customer.city }}, {{ customer.state }}</td>   
-            <td>{{ customer.bank_balance }}</td>
+            <td>{{ customer.bank_balance | currency }}</td>
         </tr>
         {% endfor %}
         </tbody>

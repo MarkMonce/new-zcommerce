@@ -26,7 +26,7 @@
             <td>{{ product.product_description }}</td>
 
             <td>{{ product.product_quantity}}</td>   
-            <td>{{ product.product_price }}</td>
+            <td>{{ product.product_price | currency }}</td>
         </tr>
         {% endfor %}
         </tbody>
