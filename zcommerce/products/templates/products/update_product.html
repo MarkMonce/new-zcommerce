@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+    <br><h3>Update Product:</h3><br>
+    <form method="post">
+
+        {{ form.hidden_tag() }}
+        {{ form.product_name.label(class="form-label") }} {{ form.product_name(class="form-control") }}
+        {{ form.product_description.label (class="form-label")}} {{ form.product_description(class="form-control") }}
+        {{ form.product_price.label(class="form-label") }} {{ form.product_price(class="form-control") }}
+        {{ form.product_quantity.label (class="form-label")}} {{ form.product_quantity(class="form-control") }}
+
+
+        <br>{{ form.submit(class="btn btn-secondary") }}
+    </form><br>
+ 
+    <button type="button" name="button" class="btn-danger" data-bs-toggle='modal' data-bs-target="#delete_product01">Delete Product</button>
+    
+    <br><br>
+    <a href="{{url_for('products.productlist')}}">Return to Product List</a>
+
+		
+    
+    
+    
+    <div class="modal" tabindex="-1" id="delete_product01">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete Product</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Make sure there are no existing orders for this product</p>
+              <p>Are you sure you want to delete?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <form action="{{url_for('products.deleteproduct', product_id=prodid)}}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input class="btn btn-danger" type="submit" value="Delete">
+              </form>
+            </div>
+          </div>
+        </div>
+     </div>
+
+
+
+
+
+
+{% endblock %}
+
+

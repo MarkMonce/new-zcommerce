@@ -1,9 +1,10 @@
 
 #Product views.py
-from flask import render_template,url_for,redirect,request,Blueprint
+from flask import render_template,url_for,redirect,request,Blueprint, flash
 from zcommerce import db
 from zcommerce.models import Product
 from zcommerce.products.forms import ProductEntry
+
 
 
 #Create mapping to this for the __init__.py file and main app.py
@@ -51,9 +52,14 @@ def updateproduct(product_id):
         form.product_description.data = product.product_description
         form.product_price.data = product.product_price
         form.product_quantity.data = product.product_quantity
+  
 
-    return render_template('add_product_old.html', form=form)
+    return render_template('update_product.html', form=form, prodid=product_id)
 
-# @products.route('/deleteproduct/<int:product_id>', methods=['GET', 'POST'])
-# def deleteproduct(product_id):
-#     product=Product.query.get(product_id)
+@products.route('/deleteproduct/<int:product_id>', methods=['GET', 'POST'])
+def deleteproduct(product_id):
+    product = Product.query.get(product_id)
+    if product:
+        db.session.delete(product)
+        db.session.commit()
+    return redirect(url_for('products.productlist'))

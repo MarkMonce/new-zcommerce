@@ -73,6 +73,14 @@ def updatecustomer(customer_id):
         form.email.data = customer.email
         form.bankbalance.data = customer.bank_balance
 
-    return render_template('add_customer.html', form=form)
+    return render_template('update_customer.html', form=form, custid=customer_id)
+
+@customers.route('/deletecustomer/<int:customer_id>', methods=['GET', 'POST'])
+def deletecustomer(customer_id):
+    customer = Customer.query.get(customer_id)
+    if customer:
+        db.session.delete(customer)
+        db.session.commit()
+    return redirect(url_for('customers.customerlist'))
 
 
