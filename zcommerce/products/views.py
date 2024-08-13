@@ -30,3 +30,31 @@ def newproduct():
 def productlist():
     products = Product.query.all()
     return render_template('product_list.html', products=products)
+
+@products.route('/updateproduct/<int:product_id>', methods=['GET', 'POST'])
+def updateproduct(product_id):
+    product = Product.query.get(product_id)
+    form = ProductEntry()
+    if form.validate_on_submit():
+        
+        product.product_name = form.product_name.data
+        product.product_description = form.product_description.data
+        product.product_price = form.product_price.data
+        product.product_quantity = form.product_quantity.data
+        
+        
+        db.session.commit() 
+        return redirect(url_for('products.productlist'))
+    
+    elif request.method == 'GET':
+        form.product_name.data = product.product_name
+        form.product_description.data = product.product_description
+        form.product_price.data = product.product_price
+        form.product_quantity.data = product.product_quantity
+
+    return render_template('add_product_old.html', form=form)
+
+@products.route('/deleteproduct/<int:product_id'), methods=['GET', 'POST'])
+def deleteproduct(product_id):
+    product=Product.query.get(product_id)
+    

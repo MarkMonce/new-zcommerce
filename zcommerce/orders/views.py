@@ -49,3 +49,13 @@ def neworder():
         return redirect(url_for('core.index'))
 
     return render_template('add_order.html', form=form)
+
+@orders.route('/orderslist')
+def orderslist():
+
+    orders = db.session.query(Order, Product, Customer)\
+                    .join(Product, Order.productid == Product.id)\
+                    .join(Customer, Order.customerid == Customer.id)\
+                    .all()
+ 
+    return render_template('orders_list.html', orders=orders)

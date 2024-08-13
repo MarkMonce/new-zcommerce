@@ -21,20 +21,19 @@
         {% for product in products %}
         <tr>
             <!-- <td>{{ product.id }}</td> -->
-            <td><a href="{{ url_for('products.newproduct', id=product.id) }}">{{ product.id }}</a></td>
+            <td><a href="{{ url_for('products.updateproduct', product_id=product.id) }}">{{ product.id }}</a></td>
             <td>{{ product.product_name }}</td>
             <td>{{ product.product_description }}</td>
 
-            <td>{{ product.product_quantity}}</td>   
-            <td>{{ product.product_price | currency }}</td>
+            <td>{{ product.product_quantity }}</td>   
+            <td>{{ product.product_price | currency}}</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
 
-   <!-- <a href="{{url_for('customers.newcustomer')}}">Add Add Customer</a><br><br>-->
   
-    <a href="{{url_for('products.newproduct')}}">Enter New Product</a>
+    <a href="{{url_for('products.newproduct')}}">Add Product</a>
 
 
 		

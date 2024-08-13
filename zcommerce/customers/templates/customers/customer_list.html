@@ -19,19 +19,21 @@
         </tr>
         </thead>
         <tbody>
-        {% for customer in customers %}
-        <tr>
-            <!--<td>{{ customer.id }}</td>-->
-            <td><a href="{{ url_for('customers.newcustomer', id=customer.id) }}">{{ customer.id }}</a></td>
-            <td>{{ customer.first_name }} {{ customer.last_name }}</td>
-            <td>{{ customer.address1 }}
-                {% if customer.address2 %}
-                    <br>{{ customer.address2 }}
-                {% endif %}</td>
-            <td>{{ customer.city }}, {{ customer.state }}</td>   
-            <td>{{ customer.bank_balance | currency }}</td>
-        </tr>
-        {% endfor %}
+        {% if customers %}
+            {% for customer in customers %}
+            <tr>
+                <!--<td>{{ customer.id }}</td>-->
+                <td><a href="{{ url_for('customers.updatecustomer', customer_id=customer.id) }}">{{ customer.id }}</a></td>
+                <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+                <td>{{ customer.address1 }}
+                    {% if customer.address2 %}
+                        <br>{{ customer.address2 }}
+                    {% endif %}</td>
+                <td>{{ customer.city }}, {{ customer.state }}</td>   
+                <td>{{ customer.bank_balance | currency }}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 
