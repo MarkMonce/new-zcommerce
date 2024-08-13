@@ -54,7 +54,6 @@ def updateproduct(product_id):
 
     return render_template('add_product_old.html', form=form)
 
-@products.route('/deleteproduct/<int:product_id'), methods=['GET', 'POST'])
-def deleteproduct(product_id):
-    product=Product.query.get(product_id)
-    
+# @products.route('/deleteproduct/<int:product_id>', methods=['GET', 'POST'])
+# def deleteproduct(product_id):
+#     product=Product.query.get(product_id)
