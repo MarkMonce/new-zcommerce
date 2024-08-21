@@ -1,6 +1,6 @@
 #dbsetup.py
 
-from models import db #Add ORM Models later
+from models import db 
 
 db.create_all()
 
